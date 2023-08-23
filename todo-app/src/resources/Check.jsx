@@ -5,7 +5,7 @@ export const Check = (props) => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill={props.fill}
+        fill={props.completed === 'true' ? 'green' : 'gray'}
         className="w-6 h-6 hover:fill-green-500 transition ease-in-out duration-300"
       >
         <path

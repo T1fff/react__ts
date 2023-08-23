@@ -1,14 +1,38 @@
 import { ListItem } from "./ListItem"
-
+import { useStore } from "../store/store"
+import { callTodos } from "../API/api.jsx"
+import { useQuery } from "react-query"
+import { useEffect } from "react"
 
 export const List = () => {
-    return (
-        <ul className="w-full flex flex-col">
-            <ListItem title={'Title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum queso dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta!'}/>
-            <ListItem title={'Title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum queso dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta!'}/>
-            <ListItem title={'Title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum queso dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta!'}/>
-            <ListItem title={'Title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum queso dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa, ipsum accusamus dolor, modi quisquam illo deserunt delectus nobis, quasi quis sapiente debitis magni at omnis ex suscipit sint nulla dicta!'}/>
+  const { data, isLoading, isError, error } = useQuery("Todos", callTodos)
 
-        </ul>
-    )
+  const setTodosInStore = useStore((state) => state.setTodos)
+  const setTodosCopy = useStore((state) => state.setCopy)
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setTodosInStore(data.data.records)
+      setTodosCopy(data.data.records)
+    }
+  }, [data, isLoading, setTodosInStore, setTodosCopy])
+
+  if (isError) {
+    console.log(error);
+  }
+
+  const todosFromStore = useStore((state) => state.todos)
+
+  return (
+    <ul className="w-full flex flex-col mb-10 "> {}
+      {todosFromStore.map((todo) => {
+        return (
+          <ListItem
+            key={todo.fields.description}
+            description={todo.fields.description}
+          />
+        )
+      })}
+    </ul>
+  )
 }
