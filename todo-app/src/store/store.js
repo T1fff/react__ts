@@ -3,8 +3,12 @@ import create from "zustand"
 const store = (set) => ({
   todos: [],
   copy: [],
+  searchValue: '',
   setTodos: (newTodos) => set({ todos: newTodos }),
   setCopy: (todos) => set({ copy: todos }),
+  setSearchValue: (value) => set({ searchValue: value }),
+
+
 
   filterTasks: (filterType) =>
   set((state) => {
@@ -20,6 +24,22 @@ const store = (set) => ({
     }
     return { todos: filteredTodos };
   }),
+
+  searchTasks: () =>
+  set((state) => {
+    let filteredTodos = [];
+    const copyTodos = [...state.copy]
+    filteredTodos = copyTodos.filter(
+      (todo) => {
+        const todoText = todo.fields.description.toLowerCase();
+        const searchText = state.searchValue.toLowerCase();
+        return todoText.includes(searchText);
+      }
+    );
+
+      
+    return { todos: filteredTodos };
+  }),
  
   
   deleteTask: (taskId) =>
@@ -29,6 +49,7 @@ const store = (set) => ({
     )
     return { todos: updatedTodos }
   }),
+  
   completeTask: (taskId) =>
     set((state) => {
       const updatedTodos = state.todos.map((todo) =>

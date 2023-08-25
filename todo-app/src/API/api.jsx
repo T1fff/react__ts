@@ -3,7 +3,6 @@ import axios from 'axios'
 export const callTodos = async () => {
     const headersList = {
       Accept: '*/*',
-      'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
       Authorization: 'Bearer patfYzEyICL5F9BEh.68047c0b66a0be6d32d0c9355e874b2d791529579a87d9378c1a34f67966b54a',
     };
   
@@ -14,5 +13,4 @@ export const callTodos = async () => {
     };
   
     return axios.request(reqOptions);
-    /* return response.data.records; */
   };
