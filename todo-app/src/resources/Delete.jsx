@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-export const Delete = (props) => {
+export const Delete = () => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        fill={props.fill}
-        className="w-6 h-6 hover:fill-red-500 transition ease-in-out duration-300"
+        className="w-6 h-6 fill-gray-500 hover:fill-red-500 transition ease-in-out duration-300"
       >
         <path
           fillRule="evenodd"

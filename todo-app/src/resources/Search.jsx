@@ -8,7 +8,7 @@ export const Search = () => {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-5 h-5 relative -top-9 -right-3"
+        className="w-5 h-5 relative -top-9 -right-3 transition ease-in-out duration-300 dark:fill-slate-400"
       >
         <path
           strokeLinecap="round"

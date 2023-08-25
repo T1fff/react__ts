@@ -1,8 +1,9 @@
 import axios from "axios"
 import { useStore } from "../store/store"
 
-export const completeATodo = async (taskId, completed) => {
+export const editATask = async (taskId, field, value) => {
   try {
+    
     const apiKey =
       "patfYzEyICL5F9BEh.68047c0b66a0be6d32d0c9355e874b2d791529579a87d9378c1a34f67966b54a"
     const baseId = "app2izY1lRJsYauhK"
@@ -16,7 +17,7 @@ export const completeATodo = async (taskId, completed) => {
 
     const updateFields = {
       fields: {
-        completed: completed.toString(),
+        [field]: value.toString(),
       },
     }
 

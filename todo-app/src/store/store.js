@@ -3,16 +3,26 @@ import create from "zustand"
 const store = (set) => ({
   todos: [],
   copy: [],
+  titleValue: '',
+  descriptionValue: '',
+  darkToggle: false,
   searchValue: '',
+  visible:false,
+  createdSuccesfully: 'invisible',
   setTodos: (newTodos) => set({ todos: newTodos }),
   setCopy: (todos) => set({ copy: todos }),
+  setTitleValue: (title) => set({ titleValue: title }),
+  setDescriptionValue: (description) => set({ descriptionValue: description }),
   setSearchValue: (value) => set({ searchValue: value }),
+  setDarkToggle: (value) => set({ darkToggle: value }),
+  setVisible: (value) => set({ visible: value }),
+  setCreatedSuccesfully: (value) => set({ createdSuccesfully: value }),
 
 
 
   filterTasks: (filterType) =>
   set((state) => {
-    let filteredTodos = [];
+   let filteredTodos = [];
     const copyTodos = [...state.copy]
 
     if (filterType == 'true') {
@@ -23,7 +33,7 @@ const store = (set) => ({
       filteredTodos = state.copy;
     }
     return { todos: filteredTodos };
-  }),
+  }), 
 
   searchTasks: () =>
   set((state) => {

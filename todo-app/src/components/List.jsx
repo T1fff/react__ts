@@ -17,6 +17,7 @@ export const List = () => {
     }
   }, [data, isLoading, setTodosInStore, setTodosCopy])
 
+
   if (isError) {
     console.log(error);
   }
@@ -24,7 +25,7 @@ export const List = () => {
   const todosFromStore = useStore((state) => state.todos)
 
   return (
-    <ul className="w-full flex flex-col mb-10 "> {}
+    <ul className="w-full flex flex-col mb-10 ">
       {todosFromStore.map((todo) => {
         return (
           <ListItem
