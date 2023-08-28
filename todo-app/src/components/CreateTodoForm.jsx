@@ -17,7 +17,6 @@ export const CreateTodoForm = () => {
   } = useForm()
 
   useEffect(() => {
-    console.log(isSubmitted);
     if (formState.isSubmitted) {
       setTimeout(() => {
         reset()
