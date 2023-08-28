@@ -2,13 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="https://to-do-cdn.microsoft.com/static-assets/c87265a87f887380a04cf21925a56539b29364b51ae53e089c3ee2b2180148c6/icons/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Todo App</title>
+    
   </head>
   <body >
-    <div id="root"></div>
+    <div id="root" class="h-screen grid place-content-center"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB-atQyJuYGdU7bj2EDlcUsV_S37kd769I",
+        authDomain: "todo-database-249ab.firebaseapp.com",
+        databaseURL: "https://todo-database-249ab-default-rtdb.firebaseio.com",
+        projectId: "todo-database-249ab",
+        storageBucket: "todo-database-249ab.appspot.com",
+        messagingSenderId: "907615581735",
+        appId: "1:907615581735:web:604dd8909f1b51b64c0002"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>

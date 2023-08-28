@@ -1,0 +1,25 @@
+{
+    "todos": [
+      {
+        "title": "Task 1",
+        "description": "Initialice the React App using Vite for better performance in the app",
+        "completed": false
+      },
+      {
+        "title": "Task 2",
+        "description": "After solving the errors, install Tailwind for the styles",
+        "completed": true
+      },
+      {
+        "title": "Task 3",
+        "description": "Discover that you cannot style the scrollbar with Tailwind, proceed to install a library",
+        "completed": false
+      },
+      {
+        "title": "Task 4",
+        "description": "Panic, because now we need to implement the functionalities",
+        "completed": false
+      }
+    ]
+  }
+  
