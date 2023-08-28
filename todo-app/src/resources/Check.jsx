@@ -5,7 +5,7 @@ export const Check = (props) => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        className={`w-6 h-6 ${props.completed === 'true' ? 'fill-green-500 dark:fill-green-600' : 'fill-gray-500'} hover:fill-green-700 transition ease-in-out duration-300  dark:hover:fill-green-500`}
+        className={`w-6 h-6 ${props.completed === 'true' ? 'fill-green-500 dark:fill-green-600' : 'fill-gray-500'} hover:fill-green-700 transition ease-in-out duration-200  dark:hover:fill-green-500`}
       >
         <path
           fillRule="evenodd"
