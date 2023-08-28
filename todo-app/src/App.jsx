@@ -13,10 +13,7 @@ function App() {
         <div className={`w-screen h-screen overflow-x-hidden scrollbar scrollbar-thumb-neutral-300 scrollbar-track-neutral-100 scrollbar-w-2 md:scrollbar-w-4 scrollbar-thumb-rounded scrollbar-track-rounded dark:bg-gray-900 transition ease-in-out duration-300 dark:scrollbar-thumb-gray-600
           dark:scrollbar-track-gray-800`}>
       <Header />
-
-      
       <Toggle/>
-
       <SearchBar />
       <Filter/>
       <List />
